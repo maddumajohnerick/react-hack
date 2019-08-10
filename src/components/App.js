@@ -1,10 +1,13 @@
 import React from "react";
+import "../App.sass";
 
 export default function App(props) {
   return (
     <>
       <div>Header</div>
-      <div>{props.children}</div>
+      <div className="section">
+        <div className="container">{props.children}</div>
+      </div>
     </>
   );
 }
