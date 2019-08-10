@@ -6,7 +6,7 @@ export default function Course({ course }) {
     <div className="course__container columns">
       <div className="course__image column">
         <Link to={`/course/${course.id}`}>
-          <img src={course.image} alt="" />
+          <img src={course.image} alt="" className="" />
         </Link>
       </div>
       <div className="course__content column is-three-quarters">
