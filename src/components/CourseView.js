@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import Course from "./Course";
 
@@ -43,9 +44,13 @@ export default function CourseView(props) {
             {modules
               ? modules.length
                 ? modules.map(m => (
-                    <a className="list-item" key={m.id}>
+                    <Link
+                      key={m.id}
+                      to={`/course/${course.id}/module/${m.id}`}
+                      className="list-item"
+                    >
                       {m.title}
-                    </a>
+                    </Link>
                   ))
                 : "No modules"
               : "Loading..."}

@@ -14,6 +14,7 @@ export default function ModuleView(props) {
   async function getModule() {
     try {
       const data = await ModuleService.getModule(moduleId);
+      console.log(data);
       setModuleItem(data);
     } catch (err) {
       console.log("ERROR", err);
