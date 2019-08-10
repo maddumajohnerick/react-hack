@@ -11,8 +11,8 @@ import ModuleView from "./components/ModuleView";
 const history = createBrowserHistory();
 
 export default (
-  <App>
-    <Router history={history}>
+  <Router history={history}>
+    <App>
       <Switch>
         <Route exact path="/" component={Courses} />
         <Route exact path="/course" component={Courses} />
@@ -25,6 +25,6 @@ export default (
         <Route exact path="/manage" component={ManageCourse} />
         {/* <Route component={NotFound} /> */}
       </Switch>
-    </Router>
-  </App>
+    </App>
+  </Router>
 );

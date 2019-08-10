@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
     <nav className="navbar" role="navigation" aria-label="main navigation">
       <div className="navbar-brand container">
-        <a className="navbar-item" href="/">
+        <Link to={`/`} className="navbar-item">
           <h3 className="title">eLearning</h3>
           {/* <img
             src="https://bulma.io/images/bulma-logo.png"
@@ -12,7 +13,7 @@ export default function Header() {
             width="112"
             height="28"
           /> */}
-        </a>
+        </Link>
 
         <a
           role="button"
