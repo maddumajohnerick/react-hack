@@ -1,21 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-export default function CourseView() {
+import Course from "./Course";
+
+import { CourseService } from "../services/courseService";
+import { ModuleService } from "../services/moduleService";
+
+export default function CourseView(props) {
+  const [course, setCourse] = useState(null);
+  const [modules, setModules] = useState(null);
+  const { match } = props;
+  const courseId = match.params.courseId;
+
+  useEffect(() => {
+    getCourse();
+    getModules();
+  }, []);
+
+  async function getCourse() {
+    try {
+      const data = await CourseService.getCourse(courseId);
+      setCourse(data);
+    } catch (err) {
+      console.log("ERROR", err);
+    }
+  }
+
+  async function getModules() {
+    try {
+      const data = await ModuleService.getModules(courseId);
+      setModules(data);
+    } catch (err) {
+      console.log("ERROR", err);
+    }
+  }
+
   return (
     <div>
-      <div classNameName="list is-hoverable">
-        <a className="list-item">Featured</a>
-        <a className="list-item">All Posts</a>
-        <a className="list-item is-active">Announcements</a>
-        <a className="list-item">Business</a>
-        <a className="list-item">Community</a>
-        <a className="list-item">Data</a>
-        <a className="list-item">Editor Tools</a>
-        <a className="list-item">Education</a>
-        <a className="list-item">Engineering</a>
-        <a className="list-item">Events</a>
-        <a className="list-item">Policy</a>
-      </div>
+      {course ? (
+        <>
+          <Course course={course} />
+          <div className="list is-hoverable">
+            {modules
+              ? modules.length
+                ? modules.map(m => (
+                    <a className="list-item" key={m.id}>
+                      {m.title}
+                    </a>
+                  ))
+                : "No modules"
+              : "Loading..."}
+          </div>
+        </>
+      ) : (
+        "Loading..."
+      )}
     </div>
   );
 }
