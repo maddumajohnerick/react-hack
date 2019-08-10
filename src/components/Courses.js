@@ -2,8 +2,8 @@ import React from "react";
 
 function Courses() {
   return (
-    <div className="column">
-      <div className="course__image column is-full">
+    <div className="course__container">
+      <div className="course__image column">
         <img src="https://via.placeholder.com/250" alt="" />
       </div>
       <div className="course__content column">
