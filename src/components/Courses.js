@@ -1,23 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import Course from "./Course";
+
+import { CourseService } from "../services/courseService";
 
 function Courses() {
+  useEffect(() => {
+    getCourses();
+  }, []);
+
+  async function getCourses() {
+    try {
+      const data = await CourseService.getCourses();
+      console.log(data);
+    } catch (err) {
+      console.log("ERROR", err);
+    }
+  }
+
   return (
-    <div className="course__container">
-      <div className="course__image column">
-        <img src="https://via.placeholder.com/250" alt="" />
+    <>
+      <div className="control has-icons-left has-icons-right">
+        <input className="input is-medium" type="email" placeholder="Email" />
+        <span className="icon is-left">
+          <i className="fas fa-envelope" />
+        </span>
+        <span className="icon is-right">
+          <i className="fas fa-check" />
+        </span>
       </div>
-      <div className="course__content column">
-        <h2 className="course__title title">Title</h2>
-        <div className="course__description">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa quis
-            mollitia perspiciatis esse provident culpa earum! Laborum, omnis
-            numquam modi aut quibusdam quasi consequuntur, cumque, accusamus
-            amet distinctio soluta molestias!
-          </p>
-        </div>
-      </div>
-    </div>
+      <Course />
+    </>
   );
 }
 
