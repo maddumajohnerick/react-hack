@@ -6,6 +6,7 @@ import { CourseService } from "../services/courseService";
 
 export default function Courses() {
   const [courses, setCourses] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     getCourses();
@@ -20,6 +21,15 @@ export default function Courses() {
     }
   }
 
+  function handleSearch(e) {
+    // const filtered = courses.filter(c =>
+    //   c.title.toLowerCase().match(e.target.value.toLowerCase())
+    // );
+
+    // setCourses(filtered);
+    setFilter(e.target.value);
+  }
+
   return (
     <>
       <div className="control has-icons-left has-icons-right mb-2">
@@ -27,6 +37,7 @@ export default function Courses() {
           className="input is-medium"
           type="email"
           placeholder="Search courses"
+          onChange={handleSearch}
         />
         <span className="icon is-left">
           <i className="fas fa-envelope" />
@@ -36,7 +47,13 @@ export default function Courses() {
         </span>
       </div>
       {courses.length
-        ? courses.map(c => <Course key={c.id} course={c} />)
+        ? courses.map(c =>
+            c.title.toLowerCase().match(filter.toLowerCase()) ? (
+              <Course key={c.id} course={c} />
+            ) : (
+              ""
+            )
+          )
         : "Loading.."}
     </>
   );
