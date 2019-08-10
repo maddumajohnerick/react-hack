@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import Course from "./Course";
 
 import { CourseService } from "../services/courseService";
 
-function Courses() {
+export default function Courses() {
+  const [courses, setCourses] = useState([]);
+
   useEffect(() => {
     getCourses();
   }, []);
@@ -12,7 +14,7 @@ function Courses() {
   async function getCourses() {
     try {
       const data = await CourseService.getCourses();
-      console.log(data);
+      setCourses(data);
     } catch (err) {
       console.log("ERROR", err);
     }
@@ -29,9 +31,9 @@ function Courses() {
           <i className="fas fa-check" />
         </span>
       </div>
-      <Course />
+      {courses.length
+        ? courses.map(c => <Course key={c.id} course={c} />)
+        : "Loading.."}
     </>
   );
 }
-
-export default Courses;

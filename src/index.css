@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.course__container {
+/* .course__container {
   display: flex;
 }
 
@@ -26,4 +26,4 @@ code {
 .course__content {
   flex: 1 0 0%;
   width: auto;
-}
+} */
