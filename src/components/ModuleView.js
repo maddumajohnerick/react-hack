@@ -20,5 +20,16 @@ export default function ModuleView(props) {
     }
   }
 
-  return <>{moduleItem ? <div>{moduleItem.title}</div> : "Loading..."}</>;
+  return (
+    <>
+      {moduleItem ? (
+        <div>
+          <div className="title">{moduleItem.title}</div>
+          <div className="desc">{moduleItem.content}</div>
+        </div>
+      ) : (
+        "Loading..."
+      )}
+    </>
+  );
 }
