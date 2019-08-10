@@ -21,7 +21,7 @@ class Service {
       axios
         .get(url)
         .then(resp => {
-          resolve(resp.data.all.filter(d => d.course_id === id));
+          resolve(resp.data.all.find(d => d.id == id));
         })
         .catch(err => {
           reject(err);

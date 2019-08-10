@@ -22,11 +22,6 @@ export default function Courses() {
   }
 
   function handleSearch(e) {
-    // const filtered = courses.filter(c =>
-    //   c.title.toLowerCase().match(e.target.value.toLowerCase())
-    // );
-
-    // setCourses(filtered);
     setFilter(e.target.value);
   }
 

@@ -17,8 +17,12 @@ export default (
         <Route exact path="/" component={Courses} />
         <Route exact path="/course" component={Courses} />
         <Route exact path="/course/:courseId" component={CourseView} />
+        <Route
+          exact
+          path="/course/:courseId/module/:moduleId"
+          component={ModuleView}
+        />
         <Route exact path="/manage" component={ManageCourse} />
-        <Route exact path="/module/:moduleId" component={ModuleView} />
         {/* <Route component={NotFound} /> */}
       </Switch>
     </Router>
