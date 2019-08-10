@@ -48,7 +48,8 @@ export default function Courses() {
       </div>
       {courses.length
         ? courses.map(c =>
-            c.title.toLowerCase().match(filter.toLowerCase()) ? (
+            c.title.toLowerCase().match(filter.toLowerCase()) &&
+            c.title.toLowerCase().match(filter.toLowerCase()).length ? (
               <Course key={c.id} course={c} />
             ) : (
               ""
