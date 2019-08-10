@@ -22,8 +22,12 @@ export default function Courses() {
 
   return (
     <>
-      <div className="control has-icons-left has-icons-right">
-        <input className="input is-medium" type="email" placeholder="Email" />
+      <div className="control has-icons-left has-icons-right mb-2">
+        <input
+          className="input is-medium"
+          type="email"
+          placeholder="Search courses"
+        />
         <span className="icon is-left">
           <i className="fas fa-envelope" />
         </span>
